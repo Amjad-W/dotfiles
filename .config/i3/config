@@ -460,6 +460,7 @@ exec --no-startup-id /usr/bin/dunst
 #exec --no-startup-id sleep 7 && firefox https://github.com/endeavouros-team/endeavouros-i3wm-setup/blob/main/force-knowledge.md
 #exec --no-startup-id sleep 3 && thunar
 
+exec --no-startup-id sleep 3 && 1password
 exec --no-startup-id sleep 3 && discord
 exec --no-startup-id sleep 3 && brave
 exec --no-startup-id sleep 3 && zoom
