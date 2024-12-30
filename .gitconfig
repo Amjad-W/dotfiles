@@ -1,0 +1,14 @@
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /opt/1Password/op-ssh-sign
+[commit]
+	gpgsign = true
+[user]
+	signingkey = omitted
+	name = ommitted
+	email = omitted@example.com
+[core]
+	editor = nvim
+[alias]
+	dotfiles = !git --git-dir=$HOME/.myconf/ --work-tree=$HOME
