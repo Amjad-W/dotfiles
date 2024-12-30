@@ -1,0 +1,33 @@
+# IDE Stuff
+.vscode/
+.idea/
+
+# Backups
+*~
+*.bak
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Lock files (Node & Nvim)
+*-lock.json
+
+# Temp Files
+*.tmp
+*.temp
+
+# SSH
+id_rsa
+id_rsa.pub
+*.pem
+*.key
+
+# Env Variables
+.env
+.env.local
+
+# Local settings
+.vimrc
+.nvmrc
