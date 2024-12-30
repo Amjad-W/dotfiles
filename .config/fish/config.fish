@@ -6,5 +6,10 @@ if status is-interactive
 end
 
 set fish_greeting ""
+
+# This assumes NVM plugin is installed 
 set --universal nvm_default_version v22.12.0
 set --universal nvm_default_packages yarn
+
+# This assumes fzf is installed
+set fzf_directory_opts --bind "ctrl-n:execute($EDITOR {} &> /dev/tty)"
