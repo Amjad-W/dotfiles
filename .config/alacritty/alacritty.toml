@@ -1,0 +1,7 @@
+[env]
+	TERM = "alacritty"
+[font]
+	normal = { family = "JetBrainsMono NerdFont", style = "Regular" }
+[terminal]
+	shell = "fish"
+
