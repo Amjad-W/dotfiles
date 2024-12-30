@@ -1,0 +1,20 @@
+bar {
+  font pango: Noto Sans Regular 10
+  status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  position bottom
+  tray_padding 0
+  strip_workspace_numbers yes
+  colors {
+    background         $base
+    statusline         $text
+    focused_statusline $text
+    focused_separator  $base
+    separator          $mauve
+
+    # target           border bg        text
+    focused_workspace  $base  $mauve    $crust
+    active_workspace   $base  $surface2 $text
+    inactive_workspace $base  $base     $text
+    urgent_workspace   $base  $red      $crust
+  }
+}
