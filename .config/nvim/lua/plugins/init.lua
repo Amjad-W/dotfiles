@@ -39,6 +39,22 @@ return {
       require "configs.mason-conform"
     end,
   },
+  -- Tree
+  {
+    "nvim-tree/nvim-tree.lua",
+    config = function()
+      require "configs.nvimtree"
+    end,
+  },
+  -- Session
+  {
+    "olimorris/persisted.nvim",
+    lazy = false,
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      require "configs.persisted"
+    end,
+  },
   -- LSP
   {
     "neovim/nvim-lspconfig",
