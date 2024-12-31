@@ -1,4 +1,26 @@
 return {
+  -- Mini stuff
+  {
+    "echasnovski/mini.surround",
+    lazy = false,
+    config = function()
+      require("mini.surround").setup()
+    end,
+  },
+  {
+    "echasnovski/mini.align",
+    lazy = false,
+    config = function()
+      require("mini.align").setup()
+    end,
+  },
+  {
+    "echasnovski/mini.splitjoin",
+    lazy = false,
+    config = function()
+      require("mini.splitjoin").setup()
+    end,
+  },
   -- Highlights
   {
     "nvim-treesitter/nvim-treesitter",
