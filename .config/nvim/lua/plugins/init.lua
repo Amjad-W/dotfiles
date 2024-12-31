@@ -1,4 +1,16 @@
 return {
+  -- Telescope
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = "scottmckendry/telescope-resession.nvim",
+    opts = {
+      extensions = {
+        resession = {
+          prompt_title = "Find Sessions",
+        },
+      },
+    },
+  },
   -- Mini stuff
   {
     "echasnovski/mini.surround",
@@ -70,11 +82,10 @@ return {
   },
   -- Session
   {
-    "olimorris/persisted.nvim",
+    "stevearc/resession.nvim",
     lazy = false,
-    dependencies = { "nvim-telescope/telescope.nvim" },
     config = function()
-      require "configs.persisted"
+      require "configs.resession"
     end,
   },
   -- LSP
@@ -91,6 +102,14 @@ return {
     dependencies = { "nvim-lspconfig" },
     config = function()
       require "configs.mason-lspconfig"
+    end,
+  },
+  -- Command Runner
+  {
+    "stevearc/overseer.nvim",
+    cmd = { "OverseerOpen", "OverseerRun", "OverseerToggle", "OverseerBuild" },
+    config = function()
+      require "configs.overseer"
     end,
   },
   -- Debugging
