@@ -3,13 +3,8 @@ local projects_dir = home_dir .. "/Projects"
 
 require("persisted").setup {
   autostart = true,
-  should_save = function()
-    local current_file_directory = vim.fn.expand "%:p:h"
-    if string.find(file_dir, projects_dir, 1, true) then
-      return true
-    end
-    return false
-  end,
+  use_git_branch = true,
+  allowed_dirs = { "~/Projects" },
 }
 require("telescope").load_extension "persisted"
 
