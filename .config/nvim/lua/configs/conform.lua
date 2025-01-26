@@ -7,13 +7,10 @@ local options = {
     -- python = { "isort", "black" },
     bash = { "shfmt" },
     c_sharp = { "csharpier" },
-    go = { "gofumpt", "goimports-reviser", "golines" },
+    go = { "gofumpt", "golines" },
   },
   formatters = {
     -- Go
-    ["goimports-reviser"] = {
-      prepend_args = { "-rm-unused" },
-    },
     golines = {
       prepend_args = { "--max-len=80" },
     },

@@ -11,6 +11,13 @@ return {
       },
     },
   },
+  {
+    lazy = false,
+    "stevearc/dressing.nvim",
+    config = function()
+      require "configs.dressing"
+    end,
+  },
   -- Mini stuff
   {
     "echasnovski/mini.surround",
@@ -92,7 +99,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
   },
@@ -104,12 +110,22 @@ return {
       require "configs.mason-lspconfig"
     end,
   },
+  {
+    "hoffs/omnisharp-extended-lsp.nvim",
+    dependencies = { "neovim/nvim-lspconfig" },
+  },
   -- Command Runner
   {
     "stevearc/overseer.nvim",
     cmd = { "OverseerOpen", "OverseerRun", "OverseerToggle", "OverseerBuild" },
     config = function()
       require "configs.overseer"
+    end,
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    config = function()
+      require "configs.toggleterm"
     end,
   },
   -- Debugging

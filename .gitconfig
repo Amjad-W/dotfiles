@@ -5,9 +5,9 @@
 [commit]
 	gpgsign = true
 [user]
-	signingkey = omitted
-	name = ommitted
-	email = omitted@example.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHDTn647iCKVgFeTPVO5pATUfWEBJVkamYDAF1ABYtfN
+	name = Amjad W.
+	email = amjadshomali60@gmail.com
 [core]
 	editor = nvim
 [alias]

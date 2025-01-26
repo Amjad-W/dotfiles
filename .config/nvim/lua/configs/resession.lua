@@ -1,11 +1,11 @@
 local resession = require "resession"
 
 resession.setup {
-  autosave = {
-    enabled = true,
-    interval = 60,
-    notify = true,
-  },
+  -- autosave = {
+  --   enabled = true,
+  --   interval = 60,
+  --   notify = true,
+  -- },
   extensions = {
     overseer = {},
   },

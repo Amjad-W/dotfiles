@@ -13,3 +13,6 @@ set --universal nvm_default_packages yarn
 
 # This assumes fzf is installed
 set fzf_directory_opts --bind "ctrl-n:execute($EDITOR {} &> /dev/tty)"
+
+# Created by `pipx` on 2025-01-03 08:42:37
+set PATH $PATH /home/amjadw/.local/bin

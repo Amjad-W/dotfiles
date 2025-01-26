@@ -23,7 +23,9 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango: Noto Sans Regular 10
+# font pango: Noto Sans Regular 10
+
+font pango: JetBrainsMono Nerd Font Bold 14
 
 # set the mod key to the winkey:
 set $mod Mod4
@@ -195,7 +197,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # keybinding in fancy rofi (automated):
-bindsym F1 exec --no-startup-id ~/.config/i3/scripts/keyhint-2
+# bindsym F1 exec --no-startup-id ~/.config/i3/scripts/keyhint-2
 # alternative
 # keybinding list in editor:
 # bindsym $mod+F1 exec --no-startup-id xed ~/.config/i3/keybindings
@@ -295,7 +297,7 @@ bindsym $mod+e exec --no-startup-id /usr/bin/thunar
 bindsym Print exec --no-startup-id scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
 # Power Profiles menu switcher (rofi)
-bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
+# bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
 
 ##########################################
 # configuration for workspace behaviour: #
@@ -423,7 +425,7 @@ bindsym $mod+F5 exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-exec --no-startup-id sleep 1 && feh --bg-fill /home/amjadw/Pictures/dark-cat-rosewater.png
+exec --no-startup-id sleep 1 && feh --bg-fill /home/amjadw/pictures/dark-cat-rosewater.png
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
@@ -453,7 +455,7 @@ exec --no-startup-id /usr/bin/dunst
 # autotiling script
 # https://github.com/nwg-piotr/autotiling
 # `yay -S autotiling ;) (it is in AUR)
-#exec_always --no-startup-id autotiling
+exec_always --no-startup-id autotiling
 
 # Autostart apps as you like
 #exec --no-startup-id sleep 2 && xfce4-terminal
@@ -595,19 +597,19 @@ include ~/.config/i3/colors/catpuccin/mocha
 
 ## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
 
-bindsym $mod+d exec --no-startup-id rofi -modi drun -show drun \
-		-config ~/.config/rofi/rofidmenu.rasi
+# bindsym $mod+d exec --no-startup-id rofi -modi drun -show drun \
+#		-config ~/.config/rofi/rofidmenu.rasi
+bindsym $mod+d exec --no-startup-id  rofi -show drun
 
 #bindsym F9 exec --no-startup-id rofi -modi drun -show drun \
 #		-config ~/.config/rofi/rofidmenu.rasi
 
 ## rofi bindings for window menu ($mod+t /F10 optional disabled)
 
-bindsym $mod+t exec --no-startup-id rofi -show window -config ~/.config/rofi/rofidmenu.rasi
+bindsym $mod+t exec --no-startup-id rofi -show window
 bindsym $mod+Period exec --no-startup-id rofi -show emoji -config ~/.config/rofi/rofidmenu.rasi
 # bindsym $mod+n exec --no-startup-id "sh ~/.config/rofi/rofiscripts/vim-session-menu.sh ~/.config/rofi/rofidmenu.rasi"
-bindsym $mod+Shift+s exec --no-startup-id "sh ~/.config/rofi/rofiscripts/scrot.sh ~/.config/rofi/rofidmenu.rasi"
-
+bindsym $mod+Shift+s exec --no-startup-id "sh $HOME/.config/rofi/rofiscripts/scrot.sh"
 #bindsym F10 exec --no-startup-id rofi -show window \
 #		-config ~/.config/rofi/rofidmenu.rasi
 
