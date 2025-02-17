@@ -1,14 +1,17 @@
 require "nvchad.mappings"
 local map = vim.keymap.set
+local unmap = vim.keymap.del
 
 -- Basics
 map("n", ";", ":", { desc = "CMD enter command mode" })
+map("n", "<leader>|", ":vsplit<CR>", { desc = "Vertical Split", noremap = true })
+map("n", "<leader>-", ":split<CR>", { desc = "Horizontal Split", noremap = true })
 
 -- Tabs
-vim.api.nvim_set_keymap("n", "<leader>ta", ":$tabnew<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>tn", ":tabn<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>tp", ":tabp<CR>", { noremap = true })
+map({ "n", "t" }, "<leader>ta", ":$tabnew<CR>", { noremap = true })
+map({ "n", "t" }, "<leader>tc", ":tabclose<CR>", { noremap = true })
+map({ "n", "t" }, "<leader>tn", ":tabn<CR>", { noremap = true })
+map({ "n", "t" }, "<leader>tp", ":tabp<CR>", { noremap = true })
 
 -- Move to buffer using Alt+bufnr
 for i = 1, 9 do
@@ -29,6 +32,35 @@ map("n", "<leader>fp", "<cmd>Telescope projects<CR>", { desc = "Telescope: Recen
 map("n", "<leader>cr", "<cmd>OverseerRun<CR>", { desc = "Overseer: Run task" })
 
 -- Terminal
+unmap("n", "<leader>h") -- Originally used for NvChad term splits
+unmap("n", "<leader>v")
+
+map("n", "<leader>t|", function()
+  require("nvchad.term").new {
+    pos = "vsp",
+  }
+end, {
+  desc = "Term: Vertical Split",
+  noremap = true,
+})
+
+map("n", "<leader>t-", function()
+  require("nvchad.term").new {
+    pos = "sp",
+  }
+end, {
+  desc = "Term: Horizontal Split",
+  noremap = true,
+})
+
+map({ "n", "t" }, "<leader>gg", function()
+  require("nvchad.term").runner {
+    pos = "float",
+    id = "lazygit",
+    cmd = "lazygit && exit",
+  }
+end, { noremap = true, silent = true, desc = "Open LazyGit Terminal" })
+
 -- map({ "i", "n", "t" }, "<A-v>", function()
 --   require("toggleterm").toggle(nil, nil, nil, "vertical", "Vertical")
 -- end, { desc = "ToggleTerm: New vertical term" })
@@ -47,14 +79,6 @@ map("n", "<leader>cr", "<cmd>OverseerRun<CR>", { desc = "Overseer: Run task" })
 --   "<cmd>LazyGitToggle<CR>",
 --   { noremap = true, silent = true, desc = "ToggleTerm: Open LazyGit Terminal" }
 -- )
-
-map({ "n", "t" }, "<leader>gg", function()
-  require("nvchad.term").runner {
-    pos = "float",
-    id = "lazygit",
-    cmd = "lazygit && exit",
-  }
-end, { noremap = true, silent = true, desc = "Open LazyGit Terminal" })
 
 -- Dap
 map("n", "<leader>dr", "<cmd> DapContinue <CR>", { desc = "DAP Continue" })
