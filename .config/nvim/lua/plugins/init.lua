@@ -1,15 +1,24 @@
 return {
+  -- {
+  --   "nanozuki/tabby.nvim",
+  --   event = "VimEnter",
+  --   dependencies = "nvim-tree/nvim-web-devicons",
+  --   config = function()
+  --     require "configs.tabby"
+  --   end,
+  -- },
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
     dependencies = "scottmckendry/telescope-resession.nvim",
-    opts = {
-      extensions = {
+    opts = function(_, conf)
+      conf.extensions = {
         resession = {
           prompt_title = "Find Sessions",
         },
-      },
-    },
+        projects = {},
+      }
+    end,
   },
   {
     lazy = false,
@@ -87,6 +96,20 @@ return {
       require "configs.nvimtree"
     end,
   },
+  {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup {}
+    end,
+  },
+  {
+    "petertriho/nvim-scrollbar",
+    lazy = false,
+    config = function()
+      require("scrollbar").setup {}
+      require("scrollbar.handlers.gitsigns").setup {}
+    end,
+  },
   -- Session
   {
     "stevearc/resession.nvim",
@@ -98,6 +121,7 @@ return {
   -- LSP
   {
     "neovim/nvim-lspconfig",
+    dependencies = { "hoffs/omnisharp-extended-lsp.nvim" },
     config = function()
       require "configs.lspconfig"
     end,
@@ -110,10 +134,6 @@ return {
       require "configs.mason-lspconfig"
     end,
   },
-  {
-    "hoffs/omnisharp-extended-lsp.nvim",
-    dependencies = { "neovim/nvim-lspconfig" },
-  },
   -- Command Runner
   {
     "stevearc/overseer.nvim",
@@ -124,33 +144,56 @@ return {
   },
   {
     "akinsho/toggleterm.nvim",
+    cmd = { "LazyGitToggle" },
     config = function()
-      require "configs.toggleterm"
+      require "configs.toggleterm-config"
     end,
   },
   -- Debugging
   {
     "mfussenegger/nvim-dap",
+    cmd = { "DapContinue", "DapToggleBreakPoint", "DapStepOver", "DapStepInto", "DapStepOut" },
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
+    },
     config = function()
-      require "configs.dap"
+      require "configs.dap-config"
     end,
   },
   {
-    "nvim-neotest/nvim-nio",
-  },
-  {
-    "rcarriga/nvim-dap-ui",
-    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    "leoluz/nvim-dap-go",
+    ft = "go",
+    dependencies = { "mfussenegger/nvim-dap" },
     config = function()
-      require "configs.dap-ui"
+      require "configs.debuggers.go"
     end,
   },
   {
     "mfussenegger/nvim-dap-python",
     ft = "python",
-    dependencies = { "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" },
+    dependencies = { "mfussenegger/nvim-dap" },
     config = function()
-      require "configs.dap-python"
+      require "configs.debuggers.python"
     end,
+  },
+  {
+    "jbyuki/one-small-step-for-vimkind",
+    ft = "lua",
+    dependencies = { "mfussenegger/nvim-dap" },
+    config = function()
+      require "configs.debuggers.lua"
+    end,
+  },
+  -- Other
+  {
+    "j-hui/fidget.nvim",
+    config = function()
+      require "configs.fidget"
+    end,
+  },
+  {
+    "nvzone/minty",
+    cmd = { "Shades", "Hue" },
   },
 }
