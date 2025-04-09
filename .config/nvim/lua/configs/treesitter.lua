@@ -24,6 +24,7 @@ local options = {
     "c_sharp",
     "python",
     "rust",
+    "terraform",
   },
   highlight = {
     enable = true,

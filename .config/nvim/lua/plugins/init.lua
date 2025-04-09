@@ -7,6 +7,17 @@ return {
   --     require "configs.tabby"
   --   end,
   -- },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+    keys = {
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    },
+  },
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
@@ -28,27 +39,10 @@ return {
     end,
   },
   -- Mini stuff
-  {
-    "echasnovski/mini.surround",
-    lazy = false,
-    config = function()
-      require("mini.surround").setup()
-    end,
-  },
-  {
-    "echasnovski/mini.align",
-    lazy = false,
-    config = function()
-      require("mini.align").setup()
-    end,
-  },
-  {
-    "echasnovski/mini.splitjoin",
-    lazy = false,
-    config = function()
-      require("mini.splitjoin").setup()
-    end,
-  },
+  { "echasnovski/mini.surround", lazy = false, opts = {} },
+  { "echasnovski/mini.align", lazy = false, opts = {} },
+  { "echasnovski/mini.splitjoin", lazy = false, opts = {} },
+  { "echasnovski/mini.notify", lazy = false, opts = {} },
   -- Highlights
   {
     "nvim-treesitter/nvim-treesitter",
@@ -98,9 +92,6 @@ return {
   },
   {
     "ahmedkhalf/project.nvim",
-    config = function()
-      require("project_nvim").setup {}
-    end,
   },
   {
     "petertriho/nvim-scrollbar",
@@ -121,7 +112,6 @@ return {
   -- LSP
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "hoffs/omnisharp-extended-lsp.nvim" },
     config = function()
       require "configs.lspconfig"
     end,
@@ -152,7 +142,6 @@ return {
   -- Debugging
   {
     "mfussenegger/nvim-dap",
-    cmd = { "DapContinue", "DapToggleBreakPoint", "DapStepOver", "DapStepInto", "DapStepOut" },
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
@@ -187,13 +176,80 @@ return {
   },
   -- Other
   {
-    "j-hui/fidget.nvim",
+    "nvzone/minty",
+    cmd = { "Shades", "Hue" },
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
     config = function()
-      require "configs.fidget"
+      require "configs.noice"
     end,
   },
   {
-    "nvzone/minty",
-    cmd = { "Shades", "Hue" },
+    "kawre/leetcode.nvim",
+    build = ":TSUpdate html",
+    lazy = "leetcode.nvim" ~= vim.fn.argv(0, -1),
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {
+      arg = "leetcode.nvim",
+      lang = "go",
+      injector = {
+        ["go"] = {
+          before = { "package main", "import ()" },
+        },
+      },
+    },
+  },
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    lazy = true,
+    ft = "markdown",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      workspaces = {
+        {
+          name = "Coding",
+          path = "~/documents/obsidian/Coding/",
+        },
+      },
+      completion = {
+        nvim_cmp = true,
+        min_chars = 2,
+      },
+      mappings = {
+        -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+        ["gf"] = {
+          action = function()
+            return require("obsidian").util.gf_passthrough()
+          end,
+          opts = { noremap = false, expr = true, buffer = true },
+        },
+        -- Toggle check-boxes.
+        ["<leader>ch"] = {
+          action = function()
+            return require("obsidian").util.toggle_checkbox()
+          end,
+          opts = { buffer = true },
+        },
+        -- Smart action depending on context, either follow link or toggle checkbox.
+        ["<cr>"] = {
+          action = function()
+            return require("obsidian").util.smart_action()
+          end,
+          opts = { buffer = true, expr = true },
+        },
+      },
+    },
   },
 }

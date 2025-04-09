@@ -10,8 +10,8 @@ map("n", "<leader>-", ":split<CR>", { desc = "Horizontal Split", noremap = true 
 -- Tabs
 map({ "n", "t" }, "<leader>ta", ":$tabnew<CR>", { noremap = true })
 map({ "n", "t" }, "<leader>tc", ":tabclose<CR>", { noremap = true })
-map({ "n", "t" }, "<leader>tn", ":tabn<CR>", { noremap = true })
-map({ "n", "t" }, "<leader>tp", ":tabp<CR>", { noremap = true })
+map({ "n", "t" }, "<C-Tab>", ":tabn<CR>", { noremap = true })
+map({ "n", "t" }, "<C-S-Tab>", ":tabp<CR>", { noremap = true })
 
 -- Move to buffer using Alt+bufnr
 for i = 1, 9 do
@@ -21,6 +21,19 @@ for i = 1, 9 do
       vim.api.nvim_set_current_buf(buf)
     else
       vim.notify(string.format("No buffer assigned to Alt-%d", i), vim.log.levels.WARN)
+    end
+  end, { silent = true, noremap = true })
+end
+
+for i = 1, 9 do
+  map("n", string.format("<C-%s>", i), function()
+    local tabs = vim.api.nvim_list_tabpages()
+    local tab = tabs[i]
+
+    if tab then
+      vim.api.nvim_set_current_tabpage(tab)
+    else
+      vim.notify(string.format("No tab assigned to Ctrl-%d", i), vim.log.levels.WARN)
     end
   end, { silent = true, noremap = true })
 end

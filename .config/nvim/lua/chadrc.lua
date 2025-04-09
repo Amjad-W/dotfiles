@@ -7,12 +7,6 @@ local M = {}
 
 M.base46 = {
   theme = "catppuccin",
-  hl_override = {
-    NvChAsciiHeader = {
-      bg = "black",
-      fg = "blue",
-    },
-  },
 }
 
 M.term = {
@@ -69,7 +63,28 @@ M.nvdash = {
     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⠁⠀⠀⠀⠀⠀⠀⠀⣿⣿⠋⠀⠀⠀⠀⠀⣠⣶⡆⠀⠀⠀⠈⠙⠿⣿⣦⡄⠀⠀⣸⣿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⣰⣪⠏⠁⠀⠀⠀⠀⠀⠀⠀⠈⠛⢿⣶⣄⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⢸⣧⠀⠀⢀⣾⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⡶⠙⢿⣿⣇⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡿⠿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡿⠦⠹⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⠷⠤⠄⠙⡿⠿⠦⠤⠤⠤⠤⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+    "                                                                  ",
+    "                                                                  ",
+  },
+
+  buttons = {
+    { txt = "󰦛  Restore Session", keys = "Leader + sl", cmd = "Telescope resession" },
+    { txt = "  Find File", keys = "Leader + ff", cmd = "Telescope find_files" },
+    { txt = "  Bookmarks", keys = "Leader + ma", cmd = "Telescope marks" },
+    { txt = "  Themes", keys = "Leader + th", cmd = "Telescope themes" },
+    { txt = "  Mappings", keys = "Leader + ch", cmd = "NvCheatsheet" },
+    { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
+    {
+      txt = function()
+        local stats = require("lazy").stats()
+        local ms = math.floor(stats.startuptime) .. " ms"
+        return "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms
+      end,
+      hl = "NvDashFooter",
+      no_gap = true,
+    },
+
+    { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
   },
 }
 
