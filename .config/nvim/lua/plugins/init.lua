@@ -7,6 +7,10 @@ return {
   --     require "configs.tabby"
   --   end,
   -- },
+  -- {
+  --   "dinrets/diffview.nvim",
+  --   cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewRefresh" },
+  -- },
   {
     "christoomey/vim-tmux-navigator",
     lazy = false,

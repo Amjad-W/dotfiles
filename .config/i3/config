@@ -56,8 +56,8 @@ new_window pixel 1
 # hide_edge_borders both
 
 # Set inner/outer gaps
-gaps inner 6
-gaps outer 3
+gaps inner 8
+gaps outer 5
 
 # show window title bars (not officially supported with i3gaps)
 #default_border normal
@@ -467,7 +467,8 @@ exec_always --no-startup-id autotiling
 exec --no-startup-id sleep 3 && 1password
 exec --no-startup-id sleep 3 && discord
 exec --no-startup-id sleep 3 && brave
-exec --no-startup-id sleep 3 && zoom
+exec --no-startup-id sleep 3 && brave
+# exec --no-startup-id sleep 3 && zoom
 
 ###############
 # system tray #
@@ -619,5 +620,5 @@ bindsym $mod+Shift+s exec --no-startup-id "sh $HOME/.config/rofi/rofiscripts/scr
 exec --no-startup-id greenclip daemon>/dev/nulh
 bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
 
-# Bind caps lock to F13
-exec --no-startup-id xmodmap ~/.Xmodmap
+# Bind caps lock to F10
+exec --no-startup-id xmodmap ~/.config/Xmodmap

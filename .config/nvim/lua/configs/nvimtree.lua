@@ -55,6 +55,10 @@ require("nvim-tree").setup {
   on_attach = mapped_on_attach,
   sync_root_with_cwd = true,
   respect_buf_cwd = true,
+  filters = {
+    dotfiles = false,
+    git_ignore = false,
+  },
   update_focused_file = {
     enable = true,
     update_root = false,

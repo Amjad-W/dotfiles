@@ -8,6 +8,19 @@ general.import = [
 	TERM = "alacritty"
 [font]
 	normal = { family = "JetBrainsMono NerdFont", style = "Regular" }
+
+[font.offset]
+    x=0
+    y=0
+
+[window]
+    # decorations="none"
+    dynamic_padding=true
+
+[window.padding]
+    x=0
+    y=0
+
 [terminal]
 	shell = "fish"
 
