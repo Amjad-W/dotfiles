@@ -8,7 +8,6 @@ local options = {
     typescript = { "prettier" },
     -- python = { "isort", "black" },
     bash = { "shfmt" },
-    c_sharp = { "csharpier" },
     go = { "gofumpt", "golines" },
   },
   formatters = {

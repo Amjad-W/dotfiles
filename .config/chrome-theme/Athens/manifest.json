@@ -1,0 +1,78 @@
+{
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "name": "Athens",
+  "theme": {
+    "images": {
+      "theme_ntp_background": "theme_ntp_background.png"
+    },
+    "colors": {
+      "frame": [
+        25,
+        18,
+        11
+      ],
+      "ntp_background": [
+        231,
+        226,
+        203
+      ],
+      "tab_text": [
+        255,
+        255,
+        255
+      ],
+      "tab_background_text": [
+        231,
+        226,
+        203
+      ],
+      "bookmark_text": [
+        185,
+        172,
+        146
+      ],
+      "ntp_text": [
+        36,
+        24,
+        15
+      ],
+      "ntp_link": [
+        6,
+        55,
+        116
+      ],
+      "ntp_header": [
+        150,
+        150,
+        150
+      ],
+      "toolbar": [
+        51,
+        43,
+        25
+      ],
+      "toolbar_text": [
+        185,
+        172,
+        146
+      ],
+      "button_background": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "toolbar_button_icon": [
+        185,
+        172,
+        146
+      ]
+    },
+    "tints": {},
+    "properties": {
+      "ntp_background_alignment": "center",
+      "ntp_background_repeat": "no-repeat"
+    }
+  }
+}

@@ -57,7 +57,6 @@ require("nvim-tree").setup {
   respect_buf_cwd = true,
   filters = {
     dotfiles = false,
-    git_ignore = false,
   },
   update_focused_file = {
     enable = true,

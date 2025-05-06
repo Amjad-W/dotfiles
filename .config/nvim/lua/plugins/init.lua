@@ -7,10 +7,10 @@ return {
   --     require "configs.tabby"
   --   end,
   -- },
-  -- {
-  --   "dinrets/diffview.nvim",
-  --   cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewRefresh" },
-  -- },
+  {
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewRefresh" },
+  },
   {
     "christoomey/vim-tmux-navigator",
     lazy = false,
@@ -25,28 +25,29 @@ return {
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = "scottmckendry/telescope-resession.nvim",
+    dependencies = { "scottmckendry/telescope-resession.nvim", "nvim-telescope/telescope-media-files.nvim" },
     opts = function(_, conf)
       conf.extensions = {
         resession = {
           prompt_title = "Find Sessions",
         },
         projects = {},
+        media_files = {},
       }
     end,
   },
-  {
-    lazy = false,
-    "stevearc/dressing.nvim",
-    config = function()
-      require "configs.dressing"
-    end,
-  },
+  -- {
+  --   lazy = false,
+  --   "stevearc/dressing.nvim",
+  --   config = function()
+  --     require "configs.dressing"
+  --   end,
+  -- },
   -- Mini stuff
   { "echasnovski/mini.surround", lazy = false, opts = {} },
   { "echasnovski/mini.align", lazy = false, opts = {} },
   { "echasnovski/mini.splitjoin", lazy = false, opts = {} },
-  { "echasnovski/mini.notify", lazy = false, opts = {} },
+  -- { "echasnovski/mini.notify", lazy = false, opts = {} },
   -- Highlights
   {
     "nvim-treesitter/nvim-treesitter",
@@ -56,21 +57,21 @@ return {
     end,
   },
   -- Lint
-  {
-    "mfussenegger/nvim-lint",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require "configs.lint"
-    end,
-  },
-  {
-    "rshkarin/mason-nvim-lint",
-    event = "VeryLazy",
-    dependencies = { "nvim-lint" },
-    config = function()
-      require "configs.mason-lint"
-    end,
-  },
+  -- {
+  --   "mfussenegger/nvim-lint",
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   config = function()
+  --     require "configs.lint"
+  --   end,
+  -- },
+  -- {
+  --   "rshkarin/mason-nvim-lint",
+  --   event = "VeryLazy",
+  --   dependencies = { "nvim-lint" },
+  --   config = function()
+  --     require "configs.mason-lint"
+  --   end,
+  -- },
   -- Conform
   {
     "stevearc/conform.nvim",
@@ -212,46 +213,57 @@ return {
       },
     },
   },
+  -- {
+  --   "epwalsh/obsidian.nvim",
+  --   version = "*",
+  --   lazy = true,
+  --   ft = "markdown",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   opts = {
+  --     workspaces = {
+  --       {
+  --         name = "Coding",
+  --         path = "~/documents/obsidian/Coding/",
+  --       },
+  --     },
+  --     completion = {
+  --       nvim_cmp = true,
+  --       min_chars = 2,
+  --     },
+  --     mappings = {
+  --       -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+  --       ["gf"] = {
+  --         action = function()
+  --           return require("obsidian").util.gf_passthrough()
+  --         end,
+  --         opts = { noremap = false, expr = true, buffer = true },
+  --       },
+  --       -- Toggle check-boxes.
+  --       ["<leader>ch"] = {
+  --         action = function()
+  --           return require("obsidian").util.toggle_checkbox()
+  --         end,
+  --         opts = { buffer = true },
+  --       },
+  --       -- Smart action depending on context, either follow link or toggle checkbox.
+  --       ["<cr>"] = {
+  --         action = function()
+  --           return require("obsidian").util.smart_action()
+  --         end,
+  --         opts = { buffer = true, expr = true },
+  --       },
+  --     },
+  --   },
+  -- },
   {
-    "epwalsh/obsidian.nvim",
-    version = "*",
-    lazy = true,
+    "MeanderingProgrammer/render-markdown.nvim",
     ft = "markdown",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
     opts = {
-      workspaces = {
-        {
-          name = "Coding",
-          path = "~/documents/obsidian/Coding/",
-        },
-      },
-      completion = {
-        nvim_cmp = true,
-        min_chars = 2,
-      },
-      mappings = {
-        -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-        ["gf"] = {
-          action = function()
-            return require("obsidian").util.gf_passthrough()
-          end,
-          opts = { noremap = false, expr = true, buffer = true },
-        },
-        -- Toggle check-boxes.
-        ["<leader>ch"] = {
-          action = function()
-            return require("obsidian").util.toggle_checkbox()
-          end,
-          opts = { buffer = true },
-        },
-        -- Smart action depending on context, either follow link or toggle checkbox.
-        ["<cr>"] = {
-          action = function()
-            return require("obsidian").util.smart_action()
-          end,
-          opts = { buffer = true, expr = true },
+      completions = {
+        lsp = {
+          enabled = true,
         },
       },
     },
