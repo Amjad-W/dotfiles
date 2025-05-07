@@ -1,0 +1,15 @@
+image=~/Pictures/Wallpapers/school_of_athens.jpg
+font=JetBrains Nerd Font Mono
+font-size=16
+scaling=fill
+ignore-empty-password
+
+inside-color=f9de74
+key-hl-color=f9de74
+bs-hl-color=191813
+
+layout-bg-color=f9de74
+layout-border-color=191813
+layout-text-color=36342a
+
+line-color=191813

@@ -1,20 +1,16 @@
 {
   "layer": "top",
   "position": "top",
-  "modules-left": [
-    "clock"
-  ],
+  /* Center Modules */
   "modules-center": [
     "hyprland/workspaces"
   ],
+  /* Right Modules */
   "modules-right": [
     "pulseaudio",
     "network",
     "battery"
   ],
-  "clock": {
-    "format": "󰥔 {:%I:%M %p}"
-  },
   "pulseaudio": {
     "format": "{icon}  {volume}%",
     "format-muted": "",
@@ -23,12 +19,14 @@
         "",
         ""
       ]
-    }
+    },
+    "on-click": "pavucontrol"
   },
   "network": {
     "format-wifi": "  {essid}",
     "format-ethernet": "󰈀 Wired",
-    "format-disconnected": " Disconnected"
+    "format-disconnected": " Disconnected",
+    "on-click": "nm-connection-editor"
   },
   "battery": {
     "format": "{icon}  {capacity}%",
@@ -39,5 +37,63 @@
       "",
       ""
     ]
+  },
+  "group/power": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "powerchild"
+    },
+    "modules": [
+      "custom/powerbutton",
+      "custom/lockbutton",
+      "custom/rebootbutton"
+    ]
+  },
+  "custom/lockbutton": {
+    "format": "󰍁",
+    "tooltip": false,
+    "on-click": "uwsm app -- swaylock"
+  },
+  "custom/rebootbutton": {
+    "format": "󰜉",
+    "tooltip": false,
+    "on-click": "reboot"
+  },
+  "custom/powerbutton": {
+    "format": "󰤆",
+    "tooltip": false,
+    "on-click": "shutdown now"
+  },
+  /* Left Modules */
+  "modules-left": [
+    "group/power",
+    "clock",
+    "group/stats"
+  ],
+  "clock": {
+    "format": "󰥔 {:%I:%M %p}"
+  },
+  "group/stats": {
+    "orientation": "horizontal",
+    "modules": [
+      "cpu",
+      "disk",
+      "temperature"
+    ]
+  },
+  "cpu": {
+    "interval": 10,
+    "format": " {}%",
+    "max-length": 10
+  },
+  "disk": {
+    "interval": 30,
+    "format": "󰋊 {specific_free:0.1f}GB",
+    "unit": "GB"
+  },
+  "temperature": {
+    "format": " {temperatureC}°C",
+    "critical-threshold": 80
   }
 }

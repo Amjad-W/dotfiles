@@ -1,26 +1,26 @@
 general.import = [
-    # "~/.config/alacritty/dracula.toml"
-    # "~/.config/alacritty/catppuccin-macchiato.toml"
-    "~/.config/alacritty/catppuccin-mocha.toml"
+  # "~/.config/alacritty/dracula.toml"
+  # "~/.config/alacritty/catppuccin-macchiato.toml"
+  # "~/.config/alacritty/catppuccin-mocha.toml"
+  "~/.config/alacritty/jellybeans.toml",
 ]
 
 [env]
-	TERM = "alacritty"
+TERM = "alacritty"
 [font]
-	normal = { family = "JetBrainsMono NerdFont", style = "Regular" }
+normal = { family = "JetBrainsMono NerdFont", style = "Regular" }
 
 [font.offset]
-    x=0
-    y=0
+x = 0
+y = 0
 
 [window]
-    # decorations="none"
-    dynamic_padding=true
+# decorations="none"
+dynamic_padding = true
 
 [window.padding]
-    x=0
-    y=0
+x = 0
+y = 0
 
 [terminal]
-	shell = "fish"
-
+shell = "fish"

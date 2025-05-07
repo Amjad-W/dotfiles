@@ -92,9 +92,9 @@
 
     # Defines color of the frame around the notification window.
     # frame_color = "#b4befe"
-    frame_color = "#b4befe"
-    separator_color= frame
-    highlight = "#b4befe"
+    frame_color = "#f9de74"
+    separator_color= auto
+    highlight = "#ffffff"
 
     # Define a color for the separator.
     # possible values are:
@@ -116,7 +116,7 @@
 
     ### Text ###
 
-    font = JetBrains Nerd Font Mono Bold 16
+    font = JetBrains Nerd Font Mono Bold 14
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -294,13 +294,27 @@
     # where there are multiple screens with very different dpi values.
     per_monitor_dpi = false
 
+# Catpuccin old
+# [urgency_low]
+#     background = "#1e1e2e"
+#     foreground = "#cdd6f4"
+#
+# [urgency_normal]
+#     background = "#1e1e2e"
+#     foreground = "#cdd6f4"
+#
+# [urgency_critical]
+#     background = "#1e1e2e"
+#     foreground = "#cdd6f4"
+#     frame_color = "#fab387"
+#
 [urgency_low]
     background = "#1e1e2e"
-    foreground = "#cdd6f4"
+    foreground = "#f9de74"
 
 [urgency_normal]
-    background = "#1e1e2e"
-    foreground = "#cdd6f4"
+    background = "#36342a"
+    foreground = "#f9de74"
 
 [urgency_critical]
     background = "#1e1e2e"

@@ -1,6 +1,6 @@
 fish_vi_key_bindings
 if not set -q __theme_set
-    fish_config theme choose "Catppuccin Mocha"
+    fish_config theme choose "jellybeans"
     set -g __theme_set 1
 end
 
@@ -37,3 +37,11 @@ set -gx TERMINAL alacritty
 if test (uwsm check may-start)
     exec uwsm start default
 end
+
+set -g tide_pwd_bg_color f9de74
+set -g tide_pwd_color_anchors 36342a
+set -g tide_pwd_color_dirs 36342a
+
+# SETUVAR tide_left_prompt_items:os\x1epwd\x1egit\x1enewline\x1echaracter
+set -g tide_left_prompt_items pwd git newline
+# set -g tide_right_prompt_items status cmd_duration context jobs direnv node python rustc java php pulumi ruby go gcloud kubectl distrobox toolbox terraform aws nix_shell crystal elixir zig time
