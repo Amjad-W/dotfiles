@@ -38,10 +38,12 @@ if test (uwsm check may-start)
     exec uwsm start default
 end
 
-set -g tide_pwd_bg_color f9de74
-set -g tide_pwd_color_anchors 36342a
-set -g tide_pwd_color_dirs 36342a
+set _sun_dark 36342a
+set _sun_yellow f9de74
 
-# SETUVAR tide_left_prompt_items:os\x1epwd\x1egit\x1enewline\x1echaracter
-set -g tide_left_prompt_items pwd git newline
-# set -g tide_right_prompt_items status cmd_duration context jobs direnv node python rustc java php pulumi ruby go gcloud kubectl distrobox toolbox terraform aws nix_shell crystal elixir zig time
+set -g tide_pwd_bg_color $_sun_yellow
+set -g tide_pwd_color_anchors $_sun_dark
+set -g tide_pwd_color_dirs $_sun_dark
+
+set -g tide_left_prompt_items pwd git newline character
+set -g tide_character_color $_sun_yellow
