@@ -213,59 +213,61 @@ return {
       },
     },
   },
-  -- {
-  --   "epwalsh/obsidian.nvim",
-  --   version = "*",
-  --   lazy = true,
-  --   ft = "markdown",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  --   opts = {
-  --     workspaces = {
-  --       {
-  --         name = "Coding",
-  --         path = "~/documents/obsidian/Coding/",
-  --       },
-  --     },
-  --     completion = {
-  --       nvim_cmp = true,
-  --       min_chars = 2,
-  --     },
-  --     mappings = {
-  --       -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-  --       ["gf"] = {
-  --         action = function()
-  --           return require("obsidian").util.gf_passthrough()
-  --         end,
-  --         opts = { noremap = false, expr = true, buffer = true },
-  --       },
-  --       -- Toggle check-boxes.
-  --       ["<leader>ch"] = {
-  --         action = function()
-  --           return require("obsidian").util.toggle_checkbox()
-  --         end,
-  --         opts = { buffer = true },
-  --       },
-  --       -- Smart action depending on context, either follow link or toggle checkbox.
-  --       ["<cr>"] = {
-  --         action = function()
-  --           return require("obsidian").util.smart_action()
-  --         end,
-  --         opts = { buffer = true, expr = true },
-  --       },
-  --     },
-  --   },
-  -- },
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    ft = "markdown",
     opts = {
       completions = {
-        lsp = {
-          enabled = true,
+        lsp = { enabled = true },
+      },
+      file_types = { "markdown", "Avante" },
+    },
+    ft = { "markdown", "Avante" },
+  },
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    version = false,
+    config = function()
+      require "configs.avante"
+    end,
+    build = "make",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      {
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            use_absolute_path = true,
+          },
         },
       },
     },
+  },
+  {
+    "ravitemer/mcphub.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    build = "npm install -g mcp-hub@latest",
+    config = function()
+      require("mcphub").setup {
+        auto_approve = false,
+        extensions = {
+          avante = {
+            make_slash_commands = true,
+          },
+        },
+      }
+    end,
   },
 }

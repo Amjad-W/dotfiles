@@ -9,4 +9,6 @@ vim.o.tabstop = 2
 vim.o.softtabstop = 2
 vim.wo.relativenumber = true
 
+vim.opt.laststatus = 3
+
 -- vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

@@ -1,3 +1,7 @@
+if test -f ~/.config/fish/env.fish
+  source ~/.config/fish/env.fish
+end
+
 fish_vi_key_bindings
 if not set -q __theme_set
     fish_config theme choose "jellybeans"
@@ -47,3 +51,4 @@ set -g tide_pwd_color_dirs $_sun_dark
 
 set -g tide_left_prompt_items pwd git newline character
 set -g tide_character_color $_sun_yellow
+
