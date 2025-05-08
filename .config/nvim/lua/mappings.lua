@@ -38,12 +38,6 @@ for i = 1, 9 do
   end, { silent = true, noremap = true })
 end
 
--- Telescope
-map("n", "<A-tab>", "<cmd>Telescope buffers sort_lastused=true<CR>", { desc = "Telescope: Find buffers" })
-map("n", "<leader>fs", "<cmd>Telescope resession<CR>", { desc = "Telescope: Find sessions" })
-map("n", "<leader>fp", "<cmd>Telescope projects<CR>", { desc = "Telescope: Recent projects" })
-map("n", "<leader>cr", "<cmd>OverseerRun<CR>", { desc = "Overseer: Run task" })
-
 -- Terminal
 unmap("n", "<leader>h") -- Originally used for NvChad term splits
 unmap("n", "<leader>v")
@@ -92,21 +86,3 @@ end, { noremap = true, silent = true, desc = "Open LazyGit Terminal" })
 --   "<cmd>LazyGitToggle<CR>",
 --   { noremap = true, silent = true, desc = "ToggleTerm: Open LazyGit Terminal" }
 -- )
-
--- Dap
-map("n", "<leader>dr", "<cmd> DapContinue <CR>", { desc = "DAP Continue" })
-map("n", "<F5>", function()
-  require("dap").continue()
-end)
-map("n", "<F10>", function()
-  require("dap").step_over()
-end)
-map("n", "<F11>", function()
-  require("dap").step_into()
-end)
-map("n", "<F12>", function()
-  require("dap").step_out()
-end)
-
-map("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "DAP Toggle Break Point" })
-map("n", "<leader>du", "<cmd> lua require('dapui').toggle({ reset = true })<CR>", { desc = "DAP Toggle UI" })

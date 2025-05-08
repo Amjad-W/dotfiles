@@ -51,22 +51,26 @@ local function mapped_on_attach(bufnr)
   vim.keymap.set("n", "H", api.tree.collapse_all, opts "Collapse All")
 end
 
-require("nvim-tree").setup {
-  on_attach = mapped_on_attach,
-  sync_root_with_cwd = true,
-  respect_buf_cwd = true,
-  filters = {
-    dotfiles = false,
-  },
-  update_focused_file = {
-    enable = true,
-    update_root = false,
-  },
-  view = {
-    width = {
-      min = 45,
-      max = -1,
-      padding = 1,
+return {
+  "nvim-tree/nvim-tree.lua",
+  -- cmd = "NvimTreeToggle", -- Or other NvimTree commands for lazy loading
+  opts = {
+    on_attach = mapped_on_attach,
+    sync_root_with_cwd = true,
+    respect_buf_cwd = true,
+    filters = {
+      dotfiles = false,
+    },
+    update_focused_file = {
+      enable = true,
+      update_root = false,
+    },
+    view = {
+      width = {
+        min = 45,
+        max = -1,
+        padding = 1,
+      },
     },
   },
 }

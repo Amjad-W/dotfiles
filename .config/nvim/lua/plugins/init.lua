@@ -1,4 +1,21 @@
 return {
+  -- UI & Theming
+  -- require "plugins.ui.dressing",
+  require "plugins.ui.noice",
+  require "plugins.ui.tmux-navigator",
+  require "plugins.ui.nvim-tree",
+  {
+    "nvzone/minty",
+    cmd = { "Shades", "Hue" },
+  },
+  {
+    "petertriho/nvim-scrollbar",
+    lazy = false,
+    config = function()
+      require("scrollbar").setup {}
+      require("scrollbar.handlers.gitsigns").setup {}
+    end,
+  },
   -- {
   --   "nanozuki/tabby.nvim",
   --   event = "VimEnter",
@@ -7,55 +24,43 @@ return {
   --     require "configs.tabby"
   --   end,
   -- },
+  --
+  --
+  -- Editing & Syntax
+  require "plugins.editing.telescope",
+  require "plugins.editing.treesitter",
+  require "plugins.editing.render-markdown",
+  require "plugins.editing.conform",
+  require "plugins.editing.mason-conform",
+  { "echasnovski/mini.surround", lazy = false, opts = {} },
+  { "echasnovski/mini.align", lazy = false, opts = {} },
+  { "echasnovski/mini.splitjoin", lazy = false, opts = {} },
+  -- { "echasnovski/mini.notify", lazy = false, opts = {} },
+  -- LSP & Completion
+  require "plugins.lsp.lspconfig",
+  require "plugins.lsp.mason-lspconfig",
+  require "plugins.linting.linting",
+  -- require "plugins.dap.core",
+  -- require "plugins.dap.go",
+  -- require "plugins.dap.python",
+  -- require "plugins.dap.lua",
+  -- Tools
+  require "plugins.tools.resession",
+  require "plugins.tools.overseer",
+  require "plugins.tools.toggleterm",
+  require "plugins.tools.leetcode",
   {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewRefresh" },
   },
   {
-    "christoomey/vim-tmux-navigator",
-    lazy = false,
-    keys = {
-      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-    },
+    "ahmedkhalf/project.nvim",
   },
-  -- Telescope
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { "scottmckendry/telescope-resession.nvim", "nvim-telescope/telescope-media-files.nvim" },
-    opts = function(_, conf)
-      conf.extensions = {
-        resession = {
-          prompt_title = "Find Sessions",
-        },
-        projects = {},
-        media_files = {},
-      }
-    end,
-  },
-  -- {
-  --   lazy = false,
-  --   "stevearc/dressing.nvim",
-  --   config = function()
-  --     require "configs.dressing"
-  --   end,
-  -- },
-  -- Mini stuff
-  { "echasnovski/mini.surround", lazy = false, opts = {} },
-  { "echasnovski/mini.align", lazy = false, opts = {} },
-  { "echasnovski/mini.splitjoin", lazy = false, opts = {} },
-  -- { "echasnovski/mini.notify", lazy = false, opts = {} },
-  -- Highlights
-  {
-    "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require "configs.treesitter"
-    end,
-  },
+
+  -- AI
+  require "plugins.ai.avante",
+  require "plugins.ai.mcphub",
+
   -- Lint
   -- {
   --   "mfussenegger/nvim-lint",
@@ -72,202 +77,4 @@ return {
   --     require "configs.mason-lint"
   --   end,
   -- },
-  -- Conform
-  {
-    "stevearc/conform.nvim",
-    event = "BufWritePre",
-    config = function()
-      require "configs.conform"
-    end,
-  },
-  {
-    "zapling/mason-conform.nvim",
-    event = "VeryLazy",
-    dependencies = { "conform.nvim" },
-    config = function()
-      require "configs.mason-conform"
-    end,
-  },
-  -- Tree
-  {
-    "nvim-tree/nvim-tree.lua",
-    config = function()
-      require "configs.nvimtree"
-    end,
-  },
-  {
-    "ahmedkhalf/project.nvim",
-  },
-  {
-    "petertriho/nvim-scrollbar",
-    lazy = false,
-    config = function()
-      require("scrollbar").setup {}
-      require("scrollbar.handlers.gitsigns").setup {}
-    end,
-  },
-  -- Session
-  {
-    "stevearc/resession.nvim",
-    lazy = false,
-    config = function()
-      require "configs.resession"
-    end,
-  },
-  -- LSP
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "configs.lspconfig"
-    end,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    event = "VeryLazy",
-    dependencies = { "nvim-lspconfig" },
-    config = function()
-      require "configs.mason-lspconfig"
-    end,
-  },
-  -- Command Runner
-  {
-    "stevearc/overseer.nvim",
-    cmd = { "OverseerOpen", "OverseerRun", "OverseerToggle", "OverseerBuild" },
-    config = function()
-      require "configs.overseer"
-    end,
-  },
-  {
-    "akinsho/toggleterm.nvim",
-    cmd = { "LazyGitToggle" },
-    config = function()
-      require "configs.toggleterm-config"
-    end,
-  },
-  -- Debugging
-  {
-    "mfussenegger/nvim-dap",
-    dependencies = {
-      "rcarriga/nvim-dap-ui",
-      "nvim-neotest/nvim-nio",
-    },
-    config = function()
-      require "configs.dap-config"
-    end,
-  },
-  {
-    "leoluz/nvim-dap-go",
-    ft = "go",
-    dependencies = { "mfussenegger/nvim-dap" },
-    config = function()
-      require "configs.debuggers.go"
-    end,
-  },
-  {
-    "mfussenegger/nvim-dap-python",
-    ft = "python",
-    dependencies = { "mfussenegger/nvim-dap" },
-    config = function()
-      require "configs.debuggers.python"
-    end,
-  },
-  {
-    "jbyuki/one-small-step-for-vimkind",
-    ft = "lua",
-    dependencies = { "mfussenegger/nvim-dap" },
-    config = function()
-      require "configs.debuggers.lua"
-    end,
-  },
-  -- Other
-  {
-    "nvzone/minty",
-    cmd = { "Shades", "Hue" },
-  },
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    },
-    config = function()
-      require "configs.noice"
-    end,
-  },
-  {
-    "kawre/leetcode.nvim",
-    build = ":TSUpdate html",
-    lazy = "leetcode.nvim" ~= vim.fn.argv(0, -1),
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-    },
-    opts = {
-      arg = "leetcode.nvim",
-      lang = "go",
-      injector = {
-        ["go"] = {
-          before = { "package main", "import ()" },
-        },
-      },
-    },
-  },
-  {
-    "MeanderingProgrammer/render-markdown.nvim",
-    opts = {
-      completions = {
-        lsp = { enabled = true },
-      },
-      file_types = { "markdown", "Avante" },
-    },
-    ft = { "markdown", "Avante" },
-  },
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    version = false,
-    config = function()
-      require "configs.avante"
-    end,
-    build = "make",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      {
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            use_absolute_path = true,
-          },
-        },
-      },
-    },
-  },
-  {
-    "ravitemer/mcphub.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    build = "npm install -g mcp-hub@latest",
-    config = function()
-      require("mcphub").setup {
-        auto_approve = false,
-        extensions = {
-          avante = {
-            make_slash_commands = true,
-          },
-        },
-      }
-    end,
-  },
 }
